@@ -22,7 +22,6 @@ hamburgerMenu.addEventListener('click', function() { // Ajoute un écouteur d'é
 });
 
 //______________________________________________________________________________________________________________________//
-
 let firstCard = document.querySelector('.card.mb-4.box-shadow'); // Sélectionne la première carte
 let editButton = firstCard.querySelector('.btn-outline-secondary'); // Sélectionne le bouton edit de la première carte
 
@@ -31,3 +30,49 @@ editButton.addEventListener('click', function() { // Ajoute un écouteur d'évé
 });
 
 //______________________________________________________________________________________________________________________//
+
+let cards = document.querySelectorAll('.card.mb-4.box-shadow'); // Sélectionne toutes les cartes et les stocke dans une variable
+let secondCard = cards[1]; // Sélectionne la deuxième carte avec l'index 1 du tableau cards
+let editButtonGreen = secondCard.querySelector('.btn-outline-secondary'); // Sélectionne le bouton edit de la deuxième carte. On peut aussi utiliser la méthode cards[1].querySelector('.btn-outline-secondary')
+
+editButtonGreen.addEventListener('click', function() { // Ajoute un écouteur d'événement sur le bouton edit de la deuxième carte et affiche le texte en vert si le bouton est cliqué
+    if (secondCard.style.color === 'green') { // Si la couleur du texte de la deuxième carte est verte, alors on enlève la couleur verte
+        secondCard.style.color = ''; // On enlève la couleur verte en mettant une chaîne de caractères vide
+    } else {
+        secondCard.style.color = 'green';  // Sinon on met la couleur verte si la couleur du texte de la deuxième carte n'est pas verte. 
+    }
+});
+
+//______________________________________________________________________________________________________________________//
+// Ici c'est la fonction la plus hideuse aue j'ai eu à définir dans toute ma vie. Je suis désolé pour ça.
+let navbar = document.querySelector('header'); // Sélectionne le header
+let link = document.querySelector('link');// Sélectionne le lien vers le fichier bootstrap
+
+navbar.addEventListener('dblclick', function() { // Ajoute un écouteur d'événement sur le header et désactive le lien vers le fichier bootstrap si le header est double cliqué
+    if (link.disabled) { // Si le lien est désactivé, alors on l'active
+        link.disabled = false; // On active le lien en mettant la propriété disabled à false
+    } else {
+        link.disabled = true; // Sinon on le désactive en mettant la propriété disabled à true
+    }
+});
+
+//______________________________________________________________________________________________________________________//
+
+let cardsCollapsing = document.querySelectorAll('.card.mb-4.box-shadow');
+
+for (let i = 0; i < cardsCollapsing.length; i++) {
+    let card = cardsCollapsing[i];
+    let viewButton = card.querySelector('.btn-success');
+    let text = card.querySelector('.card-text');
+    let image = card.querySelector('.card-img-top');
+
+    viewButton.addEventListener('mouseover', function() {
+        if (text.style.display !== 'none') {
+            text.style.display = 'none';
+            image.style.width = '20%';
+        } else {
+            text.style.display = '';
+            image.style.width = '';
+        }
+    });
+}
