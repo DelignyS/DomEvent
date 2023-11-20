@@ -1,7 +1,7 @@
 ***Le Dom et les events***
 
 
-![DomJs](images/6og0iedzof08464246nj.png)
+![DomJs](6og0iedzof08464246nj.png)
 
 **Fonctionnalité 1 :**
 
