@@ -139,6 +139,11 @@ Indice 3 : Une fois que ça marche sur une card, fait une boucle for sur la list
 ```
 **Fonctionnalités 7 :**
 
+Allez on va rajouter un peu de WTF dans la page : si un utilisateur clique sur le bouton gris ==>, la dernière card (en bas à droite) va passer en premier (en haut à gauche). On va pouvoir faire tourner les cards !
+
+Indice : Cette fonctionnalité n'est pas ultra complexe en fait : il faut pointer sur le noeud-parent des 6 cards puis déplacer la card n°6 en premier avec un insertBefore.
+
+Petite remarque : tu vas réaliser que si tu mélanges les cards, il est fort probable que la fonctionnalité 6 va se mettre à faire n'importe quoi. Si tu survoles un bouton "View", c'est une autre card qui va se réduire. Si tu arrives à corriger ça, c'est cool mais la consigne est d'ignorer ce souci pour le moment.
 ```js
     let btn = document.querySelector('.btn-secondary');
 
@@ -148,4 +153,28 @@ Indice 3 : Une fois que ça marche sur une card, fait une boucle for sur la list
         parentOfFirstColumn.insertBefore(columnContainers[columnContainers.length - 1], columnContainers[0]);
     });
 ```
+
+**Fonctionnalités 8 :**
+
+Évidemment tu t'y attendais : on va faire tourner les card dans l'autre sens aussi. Donc si un utilisateur clique sur le bouton bleu <==, la première card devra passer en dernier. À première vue, tu te dis que si tu as réussi à faire la fonctionnalité précédente, celle-ci c'est du gateau... sauf qu'il y a quelques pièges. 😈
+
+Indice 1 : Premier piège : il y a un lien HTML sur le bouton et si tu cliques dessus, une page s'ouvre ! Il faut que tu bloques ce comportement par défaut (via l'objet event - cf le cours).
+
+Indice 2 : Deuxième piège : tu as utilisé "insertBefore" pour la fonctionnalité précédente mais il n'y a pas de "insertAfter". Une solution est de considérer qu'un "insertAfter un élément A" serait, s'il existait, équivalent à faire un "insertBefore sur le nœud APRES l'élément A". Et tu peux pointer sur un noeud APRES un élément en faisant "lastCard.nextSibling".
+
+```js
+    let btnBackward = document.querySelector('.btn-primary');
+
+    btnBackward.addEventListener('click', function(event) {
+        event.preventDefault();
+        let columnContainers = document.querySelectorAll('.col-md-4');
+        let parentOfFirstColumn = columnContainers[0].parentNode;
+        if (columnContainers[0].nextSibling) {
+            parentOfFirstColumn.insertBefore(columnContainers[0], columnContainers[columnContainers.length - 1].nextSibling);
+       } else {
+           parentOfFirstColumn.appendChild(columnContainers[0]);
+       }
+    });
+```
+
 

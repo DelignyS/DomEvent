@@ -89,3 +89,18 @@ btn.addEventListener('click', function() { // Ajoute un écouteur d'événement 
 
 //______________________________________________________________________________________________________________________//
 
+let btnBackward = document.querySelector('.btn-primary'); // Sélectionne le bouton bleu du header avec le lien degueulasse
+
+btnBackward.addEventListener('click', function(event) { // Ajoute un écouteur d'événement sur le bouton bleu du header et déplace la première carte en dernier si le bouton est cliqué
+    event.preventDefault(); // Empêche le comportement par défaut du bouton bleu du header qui est de renvoyer vers une autre page
+    let columnContainers = document.querySelectorAll('.col-md-4'); // Sélectionne toutes les colonnes et les stocke dans une variable
+    let parentOfFirstColumn = columnContainers[0].parentNode; // Sélectionne le parent de la première colonne et le stocke dans une variable
+    if (columnContainers[0].nextSibling) { // Si la première colonne a un élément suivant, alors on insère la première colonne avant l'élément suivant de la dernière colonne
+        parentOfFirstColumn.insertBefore(columnContainers[0], columnContainers[columnContainers.length - 1].nextSibling); // Déplace la première colonne en dernier avec cette petite fonction que l'on peut appeler "insertBefore"
+    } else {
+        parentOfFirstColumn.appendChild(columnContainers[0]); // Sinon on insère la première colonne en dernier
+    }
+});
+
+//______________________________________________________________________________________________________________________//
+
