@@ -137,5 +137,15 @@ Indice 3 : Une fois que ça marche sur une card, fait une boucle for sur la list
         });
     }
 ```
+**Fonctionnalités 7 :**
 
+```js
+    let btn = document.querySelector('.btn-secondary');
+
+    btn.addEventListener('click', function() {
+        let columnContainers = document.querySelectorAll('.col-md-4');
+        let parentOfFirstColumn = columnContainers[0].parentNode;
+        parentOfFirstColumn.insertBefore(columnContainers[columnContainers.length - 1], columnContainers[0]);
+    });
+```
 

@@ -76,3 +76,16 @@ for (let i = 0; i < cardsCollapsing.length; i++) {
         }
     });
 }
+
+//______________________________________________________________________________________________________________________//
+//omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg
+let btn = document.querySelector('.btn-secondary');// Sélectionne le bouton gris
+
+btn.addEventListener('click', function() { // Ajoute un écouteur d'événement sur le bouton gris et déplace la dernière carte en premier si le bouton est cliqué
+    let columnContainers = document.querySelectorAll('.col-md-4'); // Sélectionne toutes les colonnes
+    let parentOfFirstColumn = columnContainers[0].parentNode; // Sélectionne le parent de la première colonne
+    parentOfFirstColumn.insertBefore(columnContainers[columnContainers.length - 1], columnContainers[0]); // Déplace la dernière colonne en premier avec cette petite fonction que l'on peut appeler "insertBefore"
+});
+
+//______________________________________________________________________________________________________________________//
+
