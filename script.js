@@ -58,21 +58,21 @@ navbar.addEventListener('dblclick', function() { // Ajoute un écouteur d'évén
 
 //______________________________________________________________________________________________________________________//
 
-let cardsCollapsing = document.querySelectorAll('.card.mb-4.box-shadow');
+let cardsCollapsing = document.querySelectorAll('.card.mb-4.box-shadow'); // Sélectionne toutes les cartes et les stocke dans une variable
 
-for (let i = 0; i < cardsCollapsing.length; i++) {
+for (let i = 0; i < cardsCollapsing.length; i++) { // Ajoute un éouteur d'évenement pour collapser les cartes au passage de la souris sur le boutton 'edit' de la carte
     let card = cardsCollapsing[i];
-    let viewButton = card.querySelector('.btn-success');
+    let viewButton = card.querySelector('.btn-success'); // Sélectionne le bouton view de la carte
     let text = card.querySelector('.card-text');
     let image = card.querySelector('.card-img-top');
 
     viewButton.addEventListener('mouseover', function() {
-        if (text.style.display !== 'none') {
-            text.style.display = 'none';
-            image.style.width = '20%';
+        if (text.style.display !== 'none') { // Si le texte de la carte n'est pas caché, alors on le cache
+            text.style.display = 'none'; // Cache le texte de la carte si le bouton 'view' est moussé
+            image.style.width = '20%'; // Réduit la taille de l'image de la carte à 20% si le bouton 'view' est cliqué
         } else {
-            text.style.display = '';
-            image.style.width = '';
+            text.style.display = ''; // Rétablit la taille de l'image de la carte à 100% si le bouton 'view' n'est pas moussé
+            image.style.width = ''; // Rétablit la taille de l'image de la carte à 100% si le bouton 'view' n'est pas moussé
         }
     });
 }
@@ -107,20 +107,20 @@ btnBackward.addEventListener('click', function(event) { // Ajoute un écouteur d
 let jsCard = document.querySelector('.card.mb-4.box-shadow img[src="https://img.icons8.com/color/480/000000/javascript.png"]').parentNode.parentNode; // Assurez-vous que cela sélectionne la bonne carte
 // la selection la plus longue et tricky de toute ma honteuse carrière. Mais plus serieusement cela permet de sélectionner la carte qui contient l'image de Javascript
 jsCard.addEventListener('keypress', function(event) { // Ajoute un écouteur d'événement sur la carte de Javascript 
-    let body = document.body;
-    body.className = '';
+    let body = document.body; // Sélectionne le body
+    body.className = ''; // Enlève toutes les classes du body
 
-    switch (event.key) {
-        case 'a':
+    switch (event.key) { // Ajoute une classe au body en fonction de la touche pressée
+        case 'a': // Si la touche pressée est a, alors on ajoute la classe col-4 au body
             body.classList.add('col-4');
             break;
-        case 'y':
+        case 'y': // Si la touche pressée est y, alors on ajoute la classe offset-md-4 au body
             body.classList.add('col-4', 'offset-md-4');
             break;
-        case 'p':
+        case 'p': // Si la touche pressée est p, alors on ajoute la classe offset-md-8 au body
             body.classList.add('col-4', 'offset-md-8');
             break;
-        case 'b':
+        case 'b': // Si la touche pressée est b, alors on enlève toutes les classes du body
             break;
     }
 });

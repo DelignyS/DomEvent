@@ -1,6 +1,8 @@
 ***Le Dom et les events***
 
 
+![DomJs](images/6og0iedzof08464246nj.webp)
+
 **Fonctionnalité 1 :**
 
 On commence par un petit échauffement : lorsque l'utilisateur va cliquer sur le footer (portant le tag <footer>), tu vas afficher le mot "clique" en console.
