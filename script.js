@@ -104,3 +104,23 @@ btnBackward.addEventListener('click', function(event) { // Ajoute un écouteur d
 
 //______________________________________________________________________________________________________________________//
 
+let jsCard = document.querySelector('.card.mb-4.box-shadow img[src="https://img.icons8.com/color/480/000000/javascript.png"]').parentNode.parentNode; // Assurez-vous que cela sélectionne la bonne carte
+// la selection la plus longue et tricky de toute ma honteuse carrière. Mais plus serieusement cela permet de sélectionner la carte qui contient l'image de Javascript
+jsCard.addEventListener('keypress', function(event) { // Ajoute un écouteur d'événement sur la carte de Javascript 
+    let body = document.body;
+    body.className = '';
+
+    switch (event.key) {
+        case 'a':
+            body.classList.add('col-4');
+            break;
+        case 'y':
+            body.classList.add('col-4', 'offset-md-4');
+            break;
+        case 'p':
+            body.classList.add('col-4', 'offset-md-8');
+            break;
+        case 'b':
+            break;
+    }
+});

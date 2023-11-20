@@ -176,5 +176,43 @@ Indice 2 : Deuxième piège : tu as utilisé "insertBefore" pour la fonctionnali
        }
     });
 ```
+**Fonctionnalités 9 :**
 
+Bon si t'es arrivé jusque-là, c'est que t'as besoin d'un peu de challenge. Du coup je t'ai concocté une fonctionnalité de derrière les fagots, spécialement conçue pour les moussaillons pas piqués des hannetons (this sentence is brought to you by www.vieilles-expressions.fr). Voici ce qu'elle va devoir faire :
 
+La fonctionnalité se déclenchera si le logo de la page (JS & Events) est sélectionné et qu'on appuie sur une touche spécifique du clavier.
+Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
+Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap au milieu de l'écran.
+Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
+Si l'utilisateur presse la touche "b", tout redevient normal.
+Indice 1 : L'event à utiliser est "keypress", appliqué au texte "JS & Events" (ou, mieux, à une div le contenant).
+
+Indice 2 : Pour modifier le rendu visuel de toute la page, il faut que tu joues avec les classes de <body>.
+
+Indice 3 : Pour mettre tout sur 4 colonnes, rajoute la classe col-4. Pour les placer au milieu ou à droite, rajoute la classe offset-md-4 ou offset-md-8.
+
+Indice 4 : Pour éviter que les classes s'accumulent, et pour que chaque touche ait un comportement propre, retire toutes les classes du <body> à chaque fois qu'un "keypress" est détecté. Ensuite seulement tu rajoutes les classes nécessaires.
+
+```js
+    let jsCard = document.querySelector('.card.mb-4.box-shadow img[src="https://img.icons8.com/color/480/000000/javascript.png"]').parentNode.parentNode;
+
+    jsCard.addEventListener('keypress', function(event) {
+       let body = document.body;
+        body.className = '';
+
+       switch (event.key) {
+            case 'a':
+                body.classList.add('col-4');
+               break;
+            case 'y':
+                body.classList.add('col-4', 'offset-md-4');
+               break;
+           case 'p':
+               body.classList.add('col-4', 'offset-md-8');
+                break;
+            case 'b':
+               break;
+       }
+    });
+
+```
